@@ -1,0 +1,12 @@
+
+.input-word-form {
+  margin: 40px 0;
+}
+
+.words-container {
+  word-wrap: break-word;
+}
+
+.word {
+  padding: 10px;
+}
