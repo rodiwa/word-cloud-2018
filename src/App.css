@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 20px;
 }
 
 .App-logo {
@@ -20,6 +21,18 @@
 
 .App-intro {
   font-size: large;
+}
+
+.input-word-form {
+  margin: 40px 0;
+}
+
+.words-container {
+  word-wrap: break-word;
+}
+
+.word {
+  padding: 10px;
 }
 
 @keyframes App-logo-spin {
