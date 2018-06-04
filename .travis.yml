@@ -1,8 +1,5 @@
 language: node_js
 before_script:
-  # install v6.x of nodejs
-   - nvm install 6
-  #install yarn globally
+   - nvm install 6.9.5
    - npm install -g yarn
-  # yarn install is like npm install
    - yarn install
