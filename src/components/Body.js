@@ -39,7 +39,7 @@ export default class Body extends React.Component {
           <input ref={this.wordInput} type="text" placeholder="add a word" />
           <button type="submit" onClick={(e) => this.addWord(e)}> Add Your Word </button>
         </form>
-        <span>Created by RD</span>
+        <span>Created by RD!</span>
       </div>
     )
   }
