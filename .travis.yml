@@ -1,5 +1,2 @@
 language: node_js
-before_script:
-   - nvm install 6.9.5
-   - npm install -g yarn
-   - yarn install
+node_js: "6.9.5"
