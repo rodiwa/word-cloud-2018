@@ -21,6 +21,12 @@ describe('When app starts', () => {
 
     expect(wrapper.find('.words-container').length).toBe(1)
   })
+
+  it('should load 5 images at the bottom of the page', () => {
+    const wrapper = mount(<Body />)
+
+    expect(wrapper.find('img').length).toBe(5)
+  })
 })
 
 describe.skip('planned scenarios', () => {

@@ -39,7 +39,14 @@ export default class Body extends React.Component {
           <input ref={this.wordInput} type="text" placeholder="add a word" />
           <button type="submit" onClick={(e) => this.addWord(e)}> Add Your Word </button>
         </form>
-        <span>Created by RD!</span>
+        <div><span>Created by RD!</span></div>
+        <div className='image-footer'>
+          <img src='https://www.svgrepo.com/show/9436/paper-plane.svg' className='img'/>
+          <img src='https://www.svgrepo.com/show/25901/idea.svg' className='img'/>
+          <img src='https://www.svgrepo.com/show/97/desk-lamp.svg' className='img'/>
+          <img src='https://www.svgrepo.com/show/27449/stopwatch.svg' className='img'/>
+          <img src='https://www.svgrepo.com/show/70627/pie-chart.svg' className='img'/>
+        </div>
       </div>
     )
   }
