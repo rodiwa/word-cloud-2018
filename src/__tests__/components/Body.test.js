@@ -22,6 +22,14 @@ describe('When app starts', () => {
     expect(wrapper.find('.words-container').length).toBe(1)
   })
 
+  it('should load 5 images at the bottom of the page', () => {
+    const wrapper = mount(<Body />)
+
+    expect(wrapper.find('img').length).toBe(0)
+  })
+})
+
+describe.skip('planned scenarios', () => {
   it('should show add category icon if any word is added', () => {
 
   })
