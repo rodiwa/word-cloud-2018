@@ -10,3 +10,13 @@
 .word {
   padding: 10px;
 }
+
+.img {
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+}
+
+.image-footer {
+  margin-top: 20px
+}
