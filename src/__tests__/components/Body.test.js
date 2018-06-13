@@ -25,7 +25,7 @@ describe('When app starts', () => {
   it('should load 5 images at the bottom of the page', () => {
     const wrapper = mount(<Body />)
 
-    expect(wrapper.find('img').length).toBe(4)
+    expect(wrapper.find('img').length).toBe(5)
   })
 })
 
