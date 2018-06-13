@@ -21,7 +21,9 @@ describe('When app starts', () => {
 
     expect(wrapper.find('.words-container').length).toBe(1)
   })
+})
 
+describe.skip('planned scenarios', () => {
   it('should show add category icon if any word is added', () => {
 
   })
