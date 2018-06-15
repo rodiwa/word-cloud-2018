@@ -7,7 +7,11 @@ import Body from '../../components/Body'
 describe('When app starts', () => {
   it('should show text input and button on initial load', () => {
     const wrapper = mount(<Body />)
-    expect(wrapper.find('form').find('input[type="text"]').length).toBe(1)
+    expect(wrapper.find('form').find('input').length).toBe(1)
+  })
+
+  it('should show add button on initial load', () => {
+    const wrapper = mount(<Body />)
     expect(wrapper.find('form').find('button').length).toBe(1)
   })
 

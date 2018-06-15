@@ -1,5 +1,8 @@
 import React from 'react'
 import '../style/Body.css'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import { upperFirst } from 'lodash'
 
 const WordCloud = ({words}) => {
   return (
@@ -12,40 +15,65 @@ const WordCloud = ({words}) => {
 export default class Body extends React.Component {
   constructor(props) {
     super(props)
-    this.wordInput = React.createRef()
     this.state= {
-      words: []
+      words: [],
+      hasError: false,
+      text: '',
     }
-  }
 
-  componentDidMount () {
-    this.wordInput.current.focus()
+    this.handleChange = this.handleChange.bind(this)
   }
 
   addWord (e) {
     e.preventDefault()
+    
+    if (!this.state.text.trim()) {
+      return
+    }
+
     this.setState({
-      words: [ ...this.state.words, this.wordInput.current.value.trim() ]
+      words: [ ...this.state.words, upperFirst(this.state.text.trim()) ]
     })
-    this.wordInput.current.value = ''
-    this.wordInput.current.focus()
+
+    this.setState({
+      text: ''
+    })
+  }
+
+  handleChange (text) {
+    this.setState({
+      text: text.target.value
+    })
   }
 
   render () {
     return (
-      <div className="body">
-        { this.state.words.length !== 0 && <WordCloud words={this.state.words} />}
-        <form className='input-word-form'>
-          <input ref={this.wordInput} type="text" placeholder="add a word" />
-          <button type="submit" onClick={(e) => this.addWord(e)}> Add Your Word </button>
+      <div className='container'>
+        <div>
+          { this.state.words.length !== 0 && <WordCloud words={this.state.words} />}
+        </div>
+        <form className='input-word-form' onSubmit={e => this.addWord(e)}>
+            <TextField
+              id='name'
+              label='My Word'
+              value={this.state.text}
+              autoFocus
+              onChange={text => this.handleChange(text)}
+              margin='normal'
+              placeholder='Add yo word and Enter'
+            />
+            <Button
+              color='primary'
+              onClick={(e) => this.addWord(e)}>
+              Add Word
+            </Button>
         </form>
-        <div><span>Created by RD!</span></div>
         <div className='image-footer'>
-          <img src='https://www.svgrepo.com/show/9436/paper-plane.svg' className='img'/>
-          <img src='https://www.svgrepo.com/show/25901/idea.svg' className='img'/>
-          <img src='https://www.svgrepo.com/show/97/desk-lamp.svg' className='img'/>
-          <img src='https://www.svgrepo.com/show/27449/stopwatch.svg' className='img'/>
-          <img src='https://www.svgrepo.com/show/70627/pie-chart.svg' className='img'/>
+          <img src='https://www.svgrepo.com/show/9436/paper-plane.svg' alt='random' className='img'/>
+          <img src='https://www.svgrepo.com/show/25901/idea.svg' alt='random' className='img'/>
+          <img src='https://www.svgrepo.com/show/97/desk-lamp.svg' alt='random' className='img'/>
+          <img src='https://www.svgrepo.com/show/27449/stopwatch.svg' alt='random' className='img'/>
+          <img src='https://www.svgrepo.com/show/70627/pie-chart.svg' alt='random' className='img'/>
         </div>
       </div>
     )
