@@ -1,10 +1,12 @@
 
-.input-word-form {
-  margin: 40px 0;
+div.container {
+  display: flex;
+  flex-direction: column;
 }
 
 .words-container {
   word-wrap: break-word;
+  margin: 20px 0;
 }
 
 .word {
@@ -12,11 +14,15 @@
 }
 
 .img {
-  height: 100px;
-  width: 100px;
+  height: 60px;
+  width: 60px;
   margin: 20px;
 }
 
 .image-footer {
   margin-top: 20px
+}
+
+input#name {
+  text-align: center;
 }

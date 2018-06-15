@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './style/App.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Body from './components/Body'
 
@@ -15,10 +16,12 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="App">
-        {this.state.showHeader && <Header />}
-        <Body />
-      </div>
+      <MuiThemeProvider>
+        <div className="App">
+          {this.state.showHeader && <Header />}
+          <Body />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
