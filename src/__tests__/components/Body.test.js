@@ -5,22 +5,26 @@ import { shallow, mount } from 'enzyme'
 import Body from '../../components/Body'
 
 describe('When app starts', () => {
-  // it('should show text input and button on initial load', () => {
-  //   const wrapper = mount(<Body />)
-  //   expect(wrapper.find('form').find('TextInput').length).toBe(1)
-  //   expect(wrapper.find('form').find('button').length).toBe(1)
-  // })
+  it('should show text input and button on initial load', () => {
+    const wrapper = mount(<Body />)
+    expect(wrapper.find('form').find('input').length).toBe(1)
+  })
 
-  // it('should add word to cloud on entering word', () => {
-  //   const wrapper = mount(<Body />)
-  //   const input = wrapper.find('input[type="text"]')
-  //   const button = wrapper.find('button')
+  it('should show add button on initial load', () => {
+    const wrapper = mount(<Body />)
+    expect(wrapper.find('form').find('button').length).toBe(1)
+  })
 
-  //   input.simulate('change', { target: { value: 'Word' } })
-  //   button.simulate('click')
+  it('should add word to cloud on entering word', () => {
+    const wrapper = mount(<Body />)
+    const input = wrapper.find('input[type="text"]')
+    const button = wrapper.find('button')
 
-  //   expect(wrapper.find('.words-container').length).toBe(1)
-  // })
+    input.simulate('change', { target: { value: 'Word' } })
+    button.simulate('click')
+
+    expect(wrapper.find('.words-container').length).toBe(1)
+  })
 
   it('should load 5 images at the bottom of the page', () => {
     const wrapper = mount(<Body />)

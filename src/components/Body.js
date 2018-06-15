@@ -1,8 +1,7 @@
 import React from 'react'
 import '../style/Body.css'
-import TextField from 'material-ui/TextField'
-import FlatButton from 'material-ui/FlatButton'
-import ErrorBoundary from './ErrorBoundary'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 import { upperFirst } from 'lodash'
 
 const WordCloud = ({words}) => {
@@ -54,22 +53,20 @@ export default class Body extends React.Component {
           { this.state.words.length !== 0 && <WordCloud words={this.state.words} />}
         </div>
         <form className='input-word-form' onSubmit={e => this.addWord(e)}>
-          <ErrorBoundary>
             <TextField
               id='name'
-              label='Name'
+              label='My Word'
               value={this.state.text}
               autoFocus
               onChange={text => this.handleChange(text)}
               margin='normal'
               placeholder='Add yo word and Enter'
             />
-            <FlatButton
-              label='Add Word'
-              primary
-              onClick={(e) => this.addWord(e)}
-            />
-          </ErrorBoundary>
+            <Button
+              color='primary'
+              onClick={(e) => this.addWord(e)}>
+              Add Word
+            </Button>
         </form>
         <div className='image-footer'>
           <img src='https://www.svgrepo.com/show/9436/paper-plane.svg' alt='random' className='img'/>
