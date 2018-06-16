@@ -69,11 +69,11 @@ export default class Body extends React.Component {
             </Button>
         </form>
         <div className='image-footer'>
-          <img src='https://www.svgrepo.com/show/9436/paper-plane.svg' alt='random' className='img'/>
-          <img src='https://www.svgrepo.com/show/25901/idea.svg' alt='random' className='img'/>
-          <img src='https://www.svgrepo.com/show/97/desk-lamp.svg' alt='random' className='img'/>
-          <img src='https://www.svgrepo.com/show/27449/stopwatch.svg' alt='random' className='img'/>
-          <img src='https://www.svgrepo.com/show/70627/pie-chart.svg' alt='random' className='img'/>
+          <img src='./images/paper-plane.svg' alt='random' className='img'/>
+          <img src='./images/idea.svg' alt='random' className='img'/>
+          <img src='./images/desk-lamp.svg' alt='random' className='img'/>
+          <img src='./images/stopwatch.svg' alt='random' className='img'/>
+          <img src='./images/pie-chart.svg' alt='random' className='img'/>
         </div>
       </div>
     )
