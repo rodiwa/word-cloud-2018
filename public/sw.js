@@ -17,6 +17,7 @@ self.addEventListener('install', event => {
           './images/stopwatch.svg',
           './images/pie-chart.svg',
           './images/favicon.ico',
+          './images/helper.svg',
           './images/icon-192x192.png',
           './images/icon-512x512.png',
         ])

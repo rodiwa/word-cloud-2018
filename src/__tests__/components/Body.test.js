@@ -8,11 +8,28 @@ describe('When app starts', () => {
   it('should show text input and button on initial load', () => {
     const wrapper = mount(<Body />)
     expect(wrapper.find('form').find('input').length).toBe(1)
+    expect(wrapper.find('form').find('button').length).toBe(1)
   })
 
-  it('should show add button on initial load', () => {
+  it('should show icon if no word is added', () => {
     const wrapper = mount(<Body />)
-    expect(wrapper.find('form').find('button').length).toBe(1)
+    const wordEmptyWrapper = wrapper.find('.word-empty-wrapper')
+    const wordEmptyIcon = wordEmptyWrapper.find('img')
+
+    // show icon if no word is added
+    expect(wordEmptyWrapper.length).toBe(1)
+    expect(wordEmptyIcon.length).toBe(1)
+  })
+
+  it('should show help text if no word is added', () => {
+    const wrapper = mount(<Body />)
+    const wordEmptyWrapper = wrapper.find('.word-empty-wrapper')
+    const wordEmptyText = wordEmptyWrapper.find('span')
+
+    // show icon if no word is added
+    expect(wordEmptyWrapper.length).toBe(1)
+    expect(wordEmptyText.length).toBe(1)
+    expect(wordEmptyText.text()).toBe('Use the text field to start adding words')
   })
 
   it('should add word to cloud on entering word', () => {
@@ -23,13 +40,14 @@ describe('When app starts', () => {
     input.simulate('change', { target: { value: 'Word' } })
     button.simulate('click')
 
+    const wordEmptyWrapper = wrapper.find('.word-empty-wrapper')
+    const wordEmptyIcon = wordEmptyWrapper.find('img')
+
+    // remove icon when any word is added
+    expect(wordEmptyWrapper.length).toBe(0)
+    expect(wordEmptyIcon.length).toBe(0)
+
     expect(wrapper.find('.words-container').length).toBe(1)
-  })
-
-  it('should load 5 images at the bottom of the page', () => {
-    const wrapper = mount(<Body />)
-
-    expect(wrapper.find('img').length).toBe(5)
   })
 })
 

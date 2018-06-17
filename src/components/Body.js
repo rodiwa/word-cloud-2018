@@ -12,6 +12,15 @@ const WordCloud = ({words}) => {
   )
 }
 
+const HelperMessage = () => {
+  return (
+    <div className='word-empty-wrapper'>
+      <img src='./images/helper.svg' alt='Y u no add no words' className='img'/>
+      <span>Use the text field to start adding words</span>
+    </div>
+  )
+}
+
 export default class Body extends React.Component {
   constructor(props) {
     super(props)
@@ -50,17 +59,18 @@ export default class Body extends React.Component {
     return (
       <div className='container'>
         <div>
+          { this.state.words.length === 0 && <HelperMessage words={this.state.words} />}
           { this.state.words.length !== 0 && <WordCloud words={this.state.words} />}
         </div>
         <form className='input-word-form' onSubmit={e => this.addWord(e)}>
             <TextField
               id='name'
-              label='My Word'
+              label='Psst. Start here..'
               value={this.state.text}
               autoFocus
               onChange={text => this.handleChange(text)}
+              autoComplete='off'
               margin='normal'
-              placeholder='Add yo word and Enter'
             />
             <Button
               color='primary'
@@ -68,13 +78,6 @@ export default class Body extends React.Component {
               Add Word
             </Button>
         </form>
-        <div className='image-footer'>
-          <img src='./images/paper-plane.svg' alt='random' className='img'/>
-          <img src='./images/idea.svg' alt='random' className='img'/>
-          <img src='./images/desk-lamp.svg' alt='random' className='img'/>
-          <img src='./images/stopwatch.svg' alt='random' className='img'/>
-          <img src='./images/pie-chart.svg' alt='random' className='img'/>
-        </div>
       </div>
     )
   }
