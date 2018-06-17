@@ -9,29 +9,41 @@ self.addEventListener('install', event => {
         return cache.addAll([
           '/',
           '/index.html',
+          '/manifest.json',
+          './static/js/bundle.js',
           './images/paper-plane.svg',
           './images/idea.svg',
           './images/desk-lamp.svg',
           './images/stopwatch.svg',
           './images/pie-chart.svg',
+          './images/favicon.ico',
+          './images/icon-192x192.png',
+          './images/icon-512x512.png',
         ])
       })
   )
 })
 
-self.addEventListener('activate', () => {
-  console.log('service worker has been activated')
-})
+self.addEventListener('activate', function(e) {
+  e.waitUntil(
+    caches.keys().then(function(keyList) {
+      return Promise.all(keyList.map(function(key) {
+        if (key !== 'word-cloud-v1') {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
+  return self.clients.claim();
+});
 
 self.addEventListener('fetch', event => {
-  console.log(event.request.url)
-  console.log(event.request)
-  event.respondWith(
-    caches
-      .match(event.request)
-      .then(response => {
-        console.log(`serving ${event.request} from cache`)
-        return response || fetch(event.request)
-      })
-  )
+  event
+    .respondWith(
+      caches
+        .match(event.request)
+        .then(response => {
+          return response || fetch(event.request)
+        })
+    )
 })
