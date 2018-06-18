@@ -13,10 +13,9 @@ const HeaderBarTop = ({ resetWords, words }) => {
       <Button
         color='primary'
         className='header-btn'
+        disabled={!words.length}
         onClick={ () => resetWords()}>
-        <IconButton aria-label="Delete" disabled={!words.length} color="primary">
-          <DeleteIcon />
-        </IconButton>
+        <DeleteIcon />
       </Button>
       
     </div>
