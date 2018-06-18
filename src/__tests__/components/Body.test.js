@@ -1,10 +1,29 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 
 import Body from '../../components/Body'
 
 describe('When app starts', () => {
+  it('should have a header bar at top', () => {
+    const wrapper = mount(<Body />)
+    expect(wrapper.find('div.header-bar-top').length).toBe(1)
+  })
+
+  it('should have a reset button/icon in header bar at top', () => {
+    const wrapper = mount(<Body />)
+    const headerBar = wrapper.find('div.header-bar-top')
+    expect(headerBar.find('button.header-btn').length).toBeGreaterThanOrEqual(1)
+  })
+
+  it('should reset words when clicking reset button', () => {
+    const wrapper = mount(<Body />)
+    const resetBtn = wrapper.find('button.header-btn')
+    const wordEmptyWrapper = wrapper.find('.word-empty-wrapper')
+
+    resetBtn.simulate('click')
+    expect(wordEmptyWrapper.length).toBe(1)
+  })
+
   it('should show text input and button on initial load', () => {
     const wrapper = mount(<Body />)
     expect(wrapper.find('form').find('input').length).toBe(1)
@@ -35,7 +54,7 @@ describe('When app starts', () => {
   it('should add word to cloud on entering word', () => {
     const wrapper = mount(<Body />)
     const input = wrapper.find('input[type="text"]')
-    const button = wrapper.find('button')
+    const button = wrapper.find('button.btn-add-word')
 
     input.simulate('change', { target: { value: 'Word' } })
     button.simulate('click')

@@ -3,6 +3,25 @@ import '../style/Body.css'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { upperFirst } from 'lodash'
+import IconButton from '@material-ui/core/IconButton'
+import Icon from '@material-ui/core/Icon'
+import DeleteIcon from '@material-ui/icons/Delete'
+
+const HeaderBarTop = ({ resetWords, words }) => {
+  return (
+    <div className='header-bar-top'>
+      <Button
+        color='primary'
+        className='header-btn'
+        onClick={ () => resetWords()}>
+        <IconButton aria-label="Delete" disabled={!words.length} color="primary">
+          <DeleteIcon />
+        </IconButton>
+      </Button>
+      
+    </div>
+  )
+}
 
 const WordCloud = ({words}) => {
   return (
@@ -16,7 +35,7 @@ const HelperMessage = () => {
   return (
     <div className='word-empty-wrapper'>
       <img src='./images/helper.svg' alt='Y u no add no words' className='img'/>
-      <span>Use the text field to start adding words</span>
+      <span className='helper-text'>Use the text field to start adding words</span>
     </div>
   )
 }
@@ -31,6 +50,13 @@ export default class Body extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.resetWords = this.resetWords.bind(this)
+  }
+
+  resetWords () {
+    this.setState({
+      words: []
+    })
   }
 
   addWord (e) {
@@ -58,7 +84,8 @@ export default class Body extends React.Component {
   render () {
     return (
       <div className='container'>
-        <div>
+        <HeaderBarTop resetWords={this.resetWords} words={this.state.words}/>
+        <div className='main-body'>
           { this.state.words.length === 0 && <HelperMessage words={this.state.words} />}
           { this.state.words.length !== 0 && <WordCloud words={this.state.words} />}
         </div>
@@ -74,6 +101,7 @@ export default class Body extends React.Component {
             />
             <Button
               color='primary'
+              className='btn-add-word'
               onClick={(e) => this.addWord(e)}>
               Add Word
             </Button>
