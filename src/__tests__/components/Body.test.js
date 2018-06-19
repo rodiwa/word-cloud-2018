@@ -6,12 +6,12 @@ import Body from '../../components/Body'
 describe('When app starts', () => {
   it('should have a header bar at top', () => {
     const wrapper = mount(<Body />)
-    expect(wrapper.find('div.header-bar-top').length).toBe(1)
+    expect(wrapper.find('header.header-bar-top').length).toBe(1)
   })
 
   it('should have a reset button/icon in header bar at top', () => {
     const wrapper = mount(<Body />)
-    const headerBar = wrapper.find('div.header-bar-top')
+    const headerBar = wrapper.find('header.header-bar-top')
     expect(headerBar.find('button.header-btn').length).toBeGreaterThanOrEqual(1)
   })
 
@@ -30,7 +30,7 @@ describe('When app starts', () => {
     expect(wrapper.find('form').find('button').length).toBe(1)
   })
 
-  it('should show icon if no word is added', () => {
+  it('should show help icon if no word is added', () => {
     const wrapper = mount(<Body />)
     const wordEmptyWrapper = wrapper.find('.word-empty-wrapper')
     const wordEmptyIcon = wordEmptyWrapper.find('img')

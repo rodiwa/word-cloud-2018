@@ -3,20 +3,25 @@ import '../style/Body.css'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { upperFirst } from 'lodash'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton'
+import Icon from '@material-ui/core/Icon'
 import DeleteIcon from '@material-ui/icons/Delete'
 
 const HeaderBarTop = ({ resetWords, words }) => {
   return (
-    <div className='header-bar-top'>
-      <Button
-        color='primary'
-        className='header-btn'
-        disabled={!words.length}
-        onClick={ () => resetWords()}>
-        <DeleteIcon />
-      </Button>
-      
-    </div>
+    <AppBar position='static' color='default' className='header-bar-top'>
+      <Toolbar>
+        <Button
+          color='primary'
+          className='header-btn'
+          disabled={!words.length}
+          onClick={ () => resetWords()}>
+          <DeleteIcon />
+        </Button>
+      </Toolbar>
+    </AppBar>
   )
 }
 
