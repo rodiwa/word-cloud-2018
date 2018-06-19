@@ -68,6 +68,24 @@ describe('When app starts', () => {
 
     expect(wrapper.find('.words-container').length).toBe(1)
   })
+
+  it('should change size of word when clicked on it', () => {
+    const wrapper = mount(<Body />).setState({
+      words: ['Random']
+    })
+    const word = wrapper.find('.words-container').find('button')
+
+    expect(word.hasClass('medium'))
+
+    word.simulate('click')
+    expect(word.hasClass('large'))
+
+    word.simulate('click')
+    expect(word.hasClass('small'))
+
+    word.simulate('click')
+    expect(word.hasClass('medium'))
+  })
 })
 
 describe.skip('planned scenarios', () => {

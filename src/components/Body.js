@@ -25,10 +25,53 @@ const HeaderBarTop = ({ resetWords, words }) => {
   )
 }
 
+class Word extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      size: 'medium',
+    }
+
+    this.changeSize = this.changeSize.bind(this)
+  }
+
+  changeSize () {
+    const { size: currentSize } = this.state
+    let newSize= ''
+
+    switch(currentSize) {
+      case 'small':
+        return this.setSize('medium')
+      case 'medium':
+        return this.setSize('large')
+      case 'large':
+        return this.setSize('small')
+      default:
+        return this.setSize('medium')
+    }
+  }
+
+  setSize (size) {
+    this.setState({ size })
+  }
+
+  render () {
+    return (
+      <Button
+        className={`word ${this.state.size}`}
+        size={this.state.size}
+        onClick={ () => this.changeSize() }
+        >
+        {this.props.word}
+      </Button>
+    )
+  }
+}
+
 const WordCloud = ({words}) => {
   return (
     <div className='words-container'>
-      {words.map((word, idx) => <span key={idx} className='word'>{word}</span>)}
+      {words.map((word, idx) => <Word key={idx} word={word} />)}
     </div>
   )
 }
