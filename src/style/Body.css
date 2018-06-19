@@ -12,9 +12,24 @@ div.container {
   width: 80%;
 }
 
-.word {
-  padding: 10px;
-  line-height: 2em;
+button.word {
+  padding: 5px;
+  line-height: 0em;
+  min-width: auto;
+  letter-spacing: -1px;
+  margin: -5px 0;
+}
+
+button.word.small {
+  font-size: 1em;
+}
+
+button.word.medium {
+  font-size: 1.5em;
+}
+
+button.word.large {
+  font-size: 2em;
 }
 
 .img {
