@@ -38,7 +38,12 @@ input#name {
   padding: 20px;
 }
 
-.header-bar-top {
+header.header-bar-top {
+  background: transparent;
+  box-shadow: none;
+}
+
+header.header-bar-top div {
   display: flex;
   justify-content: flex-end;
 }
