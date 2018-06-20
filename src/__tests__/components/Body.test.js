@@ -9,25 +9,30 @@ describe('When app starts', () => {
     expect(wrapper.find('header.header-bar-top').length).toBe(1)
   })
 
-  it('should have a reset button/icon in header bar at top', () => {
-    const wrapper = mount(<Body />)
+  it('should show a reset button/icon in header if words are added', () => {
+    const wrapper = mount(<Body />).setState({ words: ['random'] })
     const headerBar = wrapper.find('header.header-bar-top')
     expect(headerBar.find('button.header-btn').length).toBeGreaterThanOrEqual(1)
   })
 
-  it('should reset words when clicking reset button', () => {
+  it('should not show reset button if there are no words added', () => {
     const wrapper = mount(<Body />)
-    const resetBtn = wrapper.find('button.header-btn')
-    const wordEmptyWrapper = wrapper.find('.word-empty-wrapper')
+    const headerBar = wrapper.find('header.header-bar-top')
+    expect(headerBar.find('button.header-btn').length).toBe(0)
+  })
 
+  it('should reset words when clicking reset button', () => {
+    const wrapper = mount(<Body />).setState({ words: ['random'] })
+    const resetBtn = wrapper.find('button.header-btn')
+    
     resetBtn.simulate('click')
+    const wordEmptyWrapper = wrapper.find('.word-empty-wrapper')
     expect(wordEmptyWrapper.length).toBe(1)
   })
 
   it('should show text input and button on initial load', () => {
     const wrapper = mount(<Body />)
     expect(wrapper.find('form').find('input').length).toBe(1)
-    expect(wrapper.find('form').find('button').length).toBe(1)
   })
 
   it('should show help icon if no word is added', () => {
@@ -43,21 +48,24 @@ describe('When app starts', () => {
   it('should show help text if no word is added', () => {
     const wrapper = mount(<Body />)
     const wordEmptyWrapper = wrapper.find('.word-empty-wrapper')
-    const wordEmptyText = wordEmptyWrapper.find('span')
+    const helperTextAddWord = wordEmptyWrapper.find('span.add-word')
+    const helperTextTapWord = wordEmptyWrapper.find('span.tap-word')
 
     // show icon if no word is added
     expect(wordEmptyWrapper.length).toBe(1)
-    expect(wordEmptyText.length).toBe(1)
-    expect(wordEmptyText.text()).toBe('Use the text field to start adding words')
+    expect(helperTextAddWord.length).toBe(1)
+    expect(helperTextTapWord.length).toBe(1)
+    expect(helperTextAddWord.text()).toBe('You can add words from below')
+    expect(helperTextTapWord.text()).toBe('Tap a word to change its size')
   })
 
   it('should add word to cloud on entering word', () => {
     const wrapper = mount(<Body />)
     const input = wrapper.find('input[type="text"]')
-    const button = wrapper.find('button.btn-add-word')
+    const form = wrapper.find('form.input-word-form')
 
     input.simulate('change', { target: { value: 'Word' } })
-    button.simulate('click')
+    form.simulate('submit')
 
     const wordEmptyWrapper = wrapper.find('.word-empty-wrapper')
     const wordEmptyIcon = wordEmptyWrapper.find('img')
@@ -85,39 +93,5 @@ describe('When app starts', () => {
 
     word.simulate('click')
     expect(word.hasClass('medium'))
-  })
-})
-
-describe.skip('planned scenarios', () => {
-  it('should show add category icon if any word is added', () => {
-
-  })
-
-  it('should show input to enter category name', () => {
-
-  })
-
-  it('should not do anthing if we cancel adding category name', () => {
-
-  })
-
-  it('should add category section when category name is added', () => {
-
-  })
-
-  it('should show category icon if any 1 category has been added', () => {
-
-  })
-
-  it('should show saved categories when i click category button', () => {
-
-  })
-
-  it('should show add category button as last card on category page', () => {
-
-  })
-
-  it('should show add category button in header on category page', () => {
-
   })
 })
