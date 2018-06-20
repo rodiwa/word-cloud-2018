@@ -3,23 +3,21 @@ import '../style/Body.css'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { upperFirst } from 'lodash'
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton'
-import Icon from '@material-ui/core/Icon'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 import DeleteIcon from '@material-ui/icons/Delete'
 
 const HeaderBarTop = ({ resetWords, words }) => {
   return (
     <AppBar position='static' color='default' className='header-bar-top'>
       <Toolbar>
-        <Button
+        { !!words.length && <Button
           color='primary'
           className='header-btn'
           disabled={!words.length}
           onClick={ () => resetWords()}>
           <DeleteIcon />
-        </Button>
+        </Button> }
       </Toolbar>
     </AppBar>
   )
@@ -80,7 +78,8 @@ const HelperMessage = () => {
   return (
     <div className='word-empty-wrapper'>
       <img src='./images/helper.svg' alt='Y u no add no words' className='img'/>
-      <span className='helper-text'>Use the text field to start adding words</span>
+      <span className='helper-text add-word'>You can add words from below</span><br />
+      <span className='helper-text tap-word'>Tap a word to change its size</span>
     </div>
   )
 }
@@ -128,29 +127,29 @@ export default class Body extends React.Component {
 
   render () {
     return (
-      <div className='container'>
+      <div className='outer-container'>
         <HeaderBarTop resetWords={this.resetWords} words={this.state.words}/>
-        <div className='main-body'>
-          { this.state.words.length === 0 && <HelperMessage words={this.state.words} />}
-          { this.state.words.length !== 0 && <WordCloud words={this.state.words} />}
+        <div className='container' style={{ flexGrow: 1 }}>
+          <div className='body'>
+            <div className='main-body'>
+              { this.state.words.length === 0 && <HelperMessage words={this.state.words} />}
+              { this.state.words.length !== 0 && <WordCloud words={this.state.words} />}
+            </div>
+            <form className='input-word-form' onSubmit={e => this.addWord(e)}>
+              <TextField
+                id='name'
+                label='Psst. Start here..'
+                value={this.state.text}
+                autoFocus
+                onChange={text => this.handleChange(text)}
+                autoComplete='off'
+                fullWidth
+                margin='normal'
+                helperText='Type your word here and hit Enter'
+              />
+            </form>
+          </div>
         </div>
-        <form className='input-word-form' onSubmit={e => this.addWord(e)}>
-            <TextField
-              id='name'
-              label='Psst. Start here..'
-              value={this.state.text}
-              autoFocus
-              onChange={text => this.handleChange(text)}
-              autoComplete='off'
-              margin='normal'
-            />
-            <Button
-              color='primary'
-              className='btn-add-word'
-              onClick={(e) => this.addWord(e)}>
-              Add Word
-            </Button>
-        </form>
       </div>
     )
   }

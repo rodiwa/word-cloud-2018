@@ -1,9 +1,22 @@
+div.outer-container {
+  display: flex;
+  flex-direction: column;
+}
 
 div.container {
   display: flex;
   flex-direction: column;
   width: 100vw;
   justify-content: space-between;
+  flex-grow: 1;
+}
+
+div.body {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .words-container {
@@ -63,11 +76,21 @@ header.header-bar-top div {
   justify-content: flex-end;
 }
 
+button.header-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .main-body {
   display: flex;
   justify-content: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .helper-text {
   color: #ccc;
+  font-weight: 100;
 }
