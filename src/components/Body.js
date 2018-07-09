@@ -95,12 +95,28 @@ export default class Body extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.resetWords = this.resetWords.bind(this)
+
+    // local storage
+    this.localStorage = window.localStorage
+  }
+
+  componentWillMount() {
+    // check if words are in local storage and load
+    if (this.localStorage.getItem('words')) {
+      const wordsListFromLS = JSON.parse(this.localStorage.getItem('words'))
+      this.setState({
+        words: wordsListFromLS
+      })
+    }
   }
 
   resetWords () {
     this.setState({
       words: []
     })
+
+    // local storage
+    this.localStorage.clear()
   }
 
   addWord (e) {
@@ -110,13 +126,18 @@ export default class Body extends React.Component {
       return
     }
 
+    const newWordsList = [ ...this.state.words, upperFirst(this.state.text.trim()) ]
+
     this.setState({
-      words: [ ...this.state.words, upperFirst(this.state.text.trim()) ]
+      words: newWordsList
     })
 
     this.setState({
       text: ''
     })
+
+    // local storage
+    this.localStorage.setItem('words', JSON.stringify(newWordsList))
   }
 
   handleChange (text) {
