@@ -27,15 +27,23 @@ class Word extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      size: 'medium',
+      size: this.props.word.size,
+      text: this.props.word.text
     }
 
     this.changeSize = this.changeSize.bind(this)
   }
 
+  setSize (size) {
+    this.setState({ size })
+    this.props.editWord({
+      text: this.state.text,
+      size
+    })
+  }
+
   changeSize () {
     const { size: currentSize } = this.state
-    let newSize= ''
 
     switch(currentSize) {
       case 'small':
@@ -49,27 +57,24 @@ class Word extends React.Component {
     }
   }
 
-  setSize (size) {
-    this.setState({ size })
-  }
-
   render () {
+    const { size, text } = this.props.word
     return (
       <Button
-        className={`word ${this.state.size}`}
-        size={this.state.size}
+        className={`word ${size}`}
+        size={size}
         onClick={ () => this.changeSize() }
         >
-        {this.props.word}
+        {text}
       </Button>
     )
   }
 }
 
-const WordCloud = ({words}) => {
+const WordCloud = ({ words, editWord }) => {
   return (
     <div className='words-container'>
-      {words.map((word, idx) => <Word key={idx} word={word} />)}
+      {words.map((word, idx) => <Word key={idx} word={word} editWord={editWord}/>)}
     </div>
   )
 }
@@ -95,6 +100,7 @@ export default class Body extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.resetWords = this.resetWords.bind(this)
+    this.editWord = this.editWord.bind(this)
 
     // local storage
     this.localStorage = window.localStorage
@@ -119,31 +125,63 @@ export default class Body extends React.Component {
     this.localStorage.clear()
   }
 
+  isAlreadyAdded(word) {
+    const alreadyAddedWords = this.state.words.map(item => item.text.toLowerCase())
+    return alreadyAddedWords.indexOf(word) !== -1
+  }
+
   addWord (e) {
     e.preventDefault()
+    const addText = this.state.text.trim()
+    const alreadyAddedWords = this.state.words.map(item => item.text.toLowerCase())
     
-    if (!this.state.text.trim()) {
+    if (!addText) {
       return
     }
 
-    const newWordsList = [ ...this.state.words, upperFirst(this.state.text.trim()) ]
+    // handle word already added scenario
+    if (this.isAlreadyAdded(addText)) {
+      return this.clearAddingWord()
+    }
+
+    const newItem = {
+      text: upperFirst(addText),
+      size: 'medium'
+    }
+    const newWordsList = [ ...this.state.words, newItem ]
 
     this.setState({
       words: newWordsList
     })
 
-    this.setState({
-      text: ''
-    })
+    this.clearAddingWord()
 
     // local storage
     this.localStorage.setItem('words', JSON.stringify(newWordsList))
+  }
+
+  clearAddingWord() {
+    this.setState({
+      text: ''
+    })
   }
 
   handleChange (text) {
     this.setState({
       text: text.target.value
     })
+  }
+
+  editWord (wordState) {
+    let newWordsList = this.state.words.filter(item => item.text.toLowerCase() !== wordState.text.toLowerCase())
+    newWordsList = [ ...newWordsList, wordState ]
+
+    this.setState({
+      words: newWordsList
+    })
+
+    // local storage
+    this.localStorage.setItem('words', JSON.stringify(newWordsList))
   }
 
   render () {
@@ -154,7 +192,7 @@ export default class Body extends React.Component {
           <div className='body'>
             <div className='main-body'>
               { this.state.words.length === 0 && <HelperMessage words={this.state.words} />}
-              { this.state.words.length !== 0 && <WordCloud words={this.state.words} />}
+              { this.state.words.length !== 0 && <WordCloud editWord={this.editWord} words={this.state.words} />}
             </div>
             <form className='input-word-form' onSubmit={e => this.addWord(e)}>
               <TextField
