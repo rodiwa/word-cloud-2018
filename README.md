@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/rodiwa/word-cloud-2018.svg?branch=dev&style=flat-square)](https://travis-ci.org/rodiwa/word-cloud-2018) 
 [![Maintainability](https://api.codeclimate.com/v1/badges/f74f2858c2a09b2387a0/maintainability)](https://codeclimate.com/github/rodiwa/word-cloud-2018/maintainability) 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f74f2858c2a09b2387a0/test_coverage)](https://codeclimate.com/github/rodiwa/word-cloud-2018/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/rodiwa/word-cloud-2018/badge.svg?branch=dev)](https://coveralls.io/github/rodiwa/word-cloud-2018?branch=dev)
 
 A simple thought organizer to study the following concepts
 - PWAs
