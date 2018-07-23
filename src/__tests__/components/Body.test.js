@@ -4,6 +4,16 @@ import { mount } from 'enzyme'
 import Body from '../../components/Body'
 
 describe('When app starts', () => {
+  let localStorage
+
+  beforeEach(() => {
+    window.localStorage = {
+      getItem: jest.fn(),
+      setItem: jest.fn(),
+      clear: jest.fn(),
+    }
+  })
+
   it('should have a header bar at top', () => {
     const wrapper = mount(<Body />)
     expect(wrapper.find('header.header-bar-top').length).toBe(1)
