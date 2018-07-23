@@ -28,7 +28,8 @@ class Word extends React.Component {
     super(props)
     this.state = {
       size: this.props.word.size,
-      text: this.props.word.text
+      text: this.props.word.text,
+      id: this.props.word.id,
     }
 
     this.changeSize = this.changeSize.bind(this)
@@ -38,7 +39,8 @@ class Word extends React.Component {
     this.setState({ size })
     this.props.editWord({
       text: this.state.text,
-      size
+      size,
+      id: this.state.id
     })
   }
 
@@ -133,7 +135,6 @@ export default class Body extends React.Component {
   addWord (e) {
     e.preventDefault()
     const addText = this.state.text.trim()
-    const alreadyAddedWords = this.state.words.map(item => item.text.toLowerCase())
     
     if (!addText) {
       return
@@ -146,7 +147,8 @@ export default class Body extends React.Component {
 
     const newItem = {
       text: upperFirst(addText),
-      size: 'medium'
+      size: 'medium',
+      id: this.state.words.length
     }
     const newWordsList = [ ...this.state.words, newItem ]
 
@@ -173,8 +175,10 @@ export default class Body extends React.Component {
   }
 
   editWord (wordState) {
-    let newWordsList = this.state.words.filter(item => item.text.toLowerCase() !== wordState.text.toLowerCase())
-    newWordsList = [ ...newWordsList, wordState ]
+    let newWordsList = { ...this.state.words }
+    newWordsList[wordState.id] = wordState
+
+    newWordsList = Object.keys(newWordsList).map(item => newWordsList[item])
 
     this.setState({
       words: newWordsList

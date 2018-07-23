@@ -58,10 +58,6 @@
     "coverage": "node scripts/test.js --env=jsdom --coverage",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
-  "engines": {
-    "node": "6.9.5",
-    "npm": "4.1.2"
-  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
