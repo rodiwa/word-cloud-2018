@@ -208,7 +208,7 @@ export default class Body extends React.Component {
                 autoComplete='off'
                 fullWidth
                 margin='normal'
-                helperText='Type your word here and hit Enter'
+                helperText='Type your word here and hit [Enter]'
               />
             </form>
           </div>
