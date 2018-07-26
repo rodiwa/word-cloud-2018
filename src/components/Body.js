@@ -201,7 +201,7 @@ export default class Body extends React.Component {
             <form className='input-word-form' onSubmit={e => this.addWord(e)}>
               <TextField
                 id='name'
-                label='Psst. Start here..'
+                label='Psst. Tap here to start..'
                 value={this.state.text}
                 autoFocus
                 onChange={text => this.handleChange(text)}
