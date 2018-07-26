@@ -9,10 +9,11 @@ A simple thought organizer to study the following concepts
 - PWAs
 - TDD unit testing and app development in Jest
 - automatation using `travis-ci`
-- automatic deploy to `heroku` from `master` branch
+- automatic deploy to ~~`heroku`~~ `firebase` from ~~`master`~~ `dev` branch
 
 ### Demo Live App
-[https://word-cloud-2k18.herokuapp.com/](https://word-cloud-2k18.herokuapp.com/)
+~~[https://word-cloud-2k18.herokuapp.com/](https://word-cloud-2k18.herokuapp.com/)~~
+[https://wordee-f262c.firebaseapp.com/](https://wordee-f262c.firebaseapp.com/)
 
 - Open above link in Google Chrome browser
 - Open Chrome options and select 'Add to home screen'
