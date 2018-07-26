@@ -13,7 +13,7 @@ A simple thought organizer to study the following concepts
 
 ### Demo Live App
 ~~[https://word-cloud-2k18.herokuapp.com/](https://word-cloud-2k18.herokuapp.com/)~~
-[https://wordee-f262c.firebaseapp.com/](https://wordee-f262c.firebaseapp.com/)
+[https://wordee-e6ac5.firebaseapp.com](https://wordee-e6ac5.firebaseapp.com)
 
 - Open above link in Google Chrome browser
 - Open Chrome options and select 'Add to home screen'
