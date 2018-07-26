@@ -1,5 +1,6 @@
 {
   "projects": {
-    "wordee": "wordee-f262c"
+    "wordee": "wordee-f262c",
+    "default": "wordee-e6ac5"
   }
 }
