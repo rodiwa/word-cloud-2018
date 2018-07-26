@@ -7,5 +7,6 @@ deploy:
   provider: firebase
   token:
     secure: $FIREBASE_TOKEN
+  project: $FIREBASE_PROJECT_NAME
   on:
     branch: dev
