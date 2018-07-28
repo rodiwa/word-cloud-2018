@@ -1,14 +1,14 @@
 language: node_js
 node_js: "8.11.3"
-cache:
-  yarn: true
-before_deploy:
-  - yarn build
-deploy:
-  skip_cleanup: true
-  provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
-  project: $FIREBASE_PROJECT_NAME
-  on:
-    branch: dev
+# cache:
+#   yarn: true
+# before_deploy:
+#   - yarn build
+# deploy:
+#   skip_cleanup: true
+#   provider: firebase
+#   token:
+#     secure: $FIREBASE_TOKEN
+#   project: $FIREBASE_PROJECT_NAME
+#   on:
+#     branch: dev
