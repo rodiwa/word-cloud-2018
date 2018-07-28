@@ -9,7 +9,7 @@ describe('When app starts', () => {
   let localStorage
 
   beforeEach(() => {
-    window.localStorage = {
+    global.localStorage = {
       getItem: jest.fn(),
       setItem: jest.fn(),
       clear: jest.fn(),

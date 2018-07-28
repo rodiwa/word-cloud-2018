@@ -41,6 +41,7 @@ export default class Word extends React.Component {
     const { size, text } = this.props.word
     return (
       <Button
+        children=''
         className={`word ${size}`}
         size={size}
         onClick={ () => this.changeSize() }
