@@ -10,7 +10,7 @@ A simple thought organizer to study the following concepts
 - TDD unit testing and app development in Jest
 - automatation using `travis-ci`
 - automatic deploy to `firebase` from `dev` branch
-- added stickler support to handle PRs for me
+- added mergify support to handle PRs for me
 
 ### Demo Live App
 [https://wordee-e6ac5.firebaseapp.com](https://wordee-e6ac5.firebaseapp.com)
