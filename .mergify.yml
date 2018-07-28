@@ -1,0 +1,12 @@
+# use mergify to auto merge PRs once all checks are complete
+rules:
+  protection:
+    required_status_checks:
+      contexts:
+        - continuous-integration/travis-ci
+    required_pull_request_reviews:
+      required_approving_review_count: 2
+  branches:
+    protection:
+      dev:
+        required_pull_request_reviews: null
