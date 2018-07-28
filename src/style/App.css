@@ -1,3 +1,8 @@
+/*
+ * Using single CSS only as not many components for now 
+ */
+
+ /* App.js */
 .App {
   display: flex;
   justify-content: center;
@@ -24,6 +29,111 @@
 .App-intro {
   font-size: large;
 }
+ /* ...App.js */
+
+div.outer-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Common */
+div.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+div.body {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* WordCloud.js */
+.words-container {
+  word-wrap: break-word;
+  margin: 20px;
+  width: 80%;
+}
+/* ...WordCloud.js */
+
+/* Word.js */
+button.word {
+  padding: 5px;
+  line-height: 0em;
+  min-width: auto;
+  letter-spacing: -1px;
+  margin: -5px 0;
+}
+
+button.word.small {
+  font-size: 1em;
+}
+
+button.word.medium {
+  font-size: 1.5em;
+}
+
+button.word.large {
+  font-size: 2em;
+}
+/* ...Word.js */
+
+/* AddNewInput.js */
+input#name {
+  text-align: center;
+}
+/* ...AddNewInput.js */
+
+/* HelperMessage.js */
+.img {
+  height: 60px;
+  width: 60px;
+  margin: 20px;
+}
+
+.word-empty-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+header.header-bar-top {
+  background: transparent;
+  box-shadow: none;
+}
+
+header.header-bar-top div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button.header-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.helper-text {
+  color: #ccc;
+  font-weight: 100;
+}
+/* ...HelperMessage.js */
+
+/* WorkSpaceArea.js */
+.main-body {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* ...WorkSpaceArea.js */
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
