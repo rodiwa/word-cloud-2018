@@ -1,4 +1,3 @@
-# use mergify to auto merge PRs once all checks are complete
 rules:
   protection:
     required_status_checks:
