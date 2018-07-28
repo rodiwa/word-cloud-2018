@@ -9,10 +9,10 @@ A simple thought organizer to study the following concepts
 - PWAs
 - TDD unit testing and app development in Jest
 - automatation using `travis-ci`
-- automatic deploy to ~~`heroku`~~ `firebase` from ~~`master`~~ `dev` branch
+- automatic deploy to `firebase` from `dev` branch
+- added mergify support to handle PRs for me
 
 ### Demo Live App
-~~[https://word-cloud-2k18.herokuapp.com/](https://word-cloud-2k18.herokuapp.com/)~~
 [https://wordee-e6ac5.firebaseapp.com](https://wordee-e6ac5.firebaseapp.com)
 
 - Open above link in Google Chrome browser
