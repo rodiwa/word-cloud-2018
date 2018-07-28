@@ -7,10 +7,56 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import DeleteIcon from '@material-ui/icons/Delete'
 
+import FirebaseService from '../services/FirebaseService'
+
+import firebase from 'firebase'
+
+const signIn = () => {
+  const provider = new firebase.auth.GoogleAuthProvider()
+  firebase
+    .auth()
+    .signInWithRedirect(provider)
+    .then(result => {
+      const { uid, displayName } = result
+      console.log(result)
+      firebase.database().ref(`user/${uid}`).set({
+        displayName 
+      })
+    })
+    .catch(err => {
+      console.error(err)
+    })
+}
+
+const signOut = () => {
+  firebase.auth().signOut()
+    .then(() => {
+      console.log('signed out')
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+}
+
 const HeaderBarTop = ({ resetWords, words }) => {
+  console.log(FirebaseService.auth().currentUser)
   return (
     <AppBar position='static' color='default' className='header-bar-top'>
       <Toolbar>
+        { !FirebaseService.auth().currentUser && <Button
+          color='primary'
+          className='header-btn'
+          onClick={ () => signIn()}>
+          Login
+        </Button>
+        }
+        { FirebaseService.auth().currentUser && <Button
+          color='primary'
+          className='header-btn'
+          onClick={ () => signOut()}>
+          Logout
+        </Button>
+        }
         { !!words.length && <Button
           color='primary'
           className='header-btn'
