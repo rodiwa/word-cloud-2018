@@ -103,12 +103,12 @@ input#name {
   padding: 20px;
 }
 
-header.header-bar-top {
+/* header.header-bar-top {
   background: transparent;
   box-shadow: none;
-}
+} */
 
-header.header-bar-top div {
+/* header.header-bar-top div {
   display: flex;
   justify-content: flex-end;
 }
@@ -116,7 +116,7 @@ header.header-bar-top div {
 button.header-btn {
   display: flex;
   justify-content: flex-end;
-}
+} */
 
 .helper-text {
   color: #ccc;

@@ -33,6 +33,5 @@ export const signOut = () => {
 }
 
 export const isLoggedIn = () => {
-  console.log(firebase.auth().currentUser)
   return firebase.auth().currentUser
 }

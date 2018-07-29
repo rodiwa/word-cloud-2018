@@ -1,11 +1,15 @@
 import React from 'react'
 import { upperFirst } from 'lodash'
+import firebase from 'firebase'
 
-import { HeaderBarTop } from './HeaderBarTop'
+import HeaderBarTop from './HeaderBarTop'
 import { AddNewInput } from './AddNewInput'
 import { WorkSpaceArea } from './WorkSpaceArea'
 
-export default class Body extends React.Component {
+import Button from '@material-ui/core/Button'
+import DeleteIcon from '@material-ui/icons/Delete'
+
+export default class Body extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state= {
@@ -90,6 +94,7 @@ export default class Body extends React.Component {
   }
 
   editWord (wordState) {
+    console.log(firebase.auth().currentUser)
     let newWordsList = { ...this.state.words }
     newWordsList[wordState.id] = wordState
 
@@ -106,9 +111,16 @@ export default class Body extends React.Component {
   render () {
     return (
       <div className='outer-container'>
-        <HeaderBarTop resetWords={this.resetWords} words={this.state.words}/>
+        <HeaderBarTop />
         <div className='container' style={{ flexGrow: 1 }}>
           <div className='body'>
+              { !!this.state.words.length && <Button
+              color='primary'
+              className='header-btn'
+              disabled={!this.state.words.length}
+              onClick={ () => this.resetWords()}>
+              <DeleteIcon />
+            </Button> }
             <WorkSpaceArea
               words={this.state.words}
               editWord={this.editWord}
