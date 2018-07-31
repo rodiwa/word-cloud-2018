@@ -12,8 +12,6 @@ export const signIn = () => {
       const uid = result.user.uid
       const isExistingUser = await isUserExists({ uid })
 
-      console.log(isExistingUser)
-
       if (!isExistingUser) {
         addUser(uid)
         saveCurrentWorkSpaceDB({ data, uid })
