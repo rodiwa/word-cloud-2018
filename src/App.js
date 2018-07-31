@@ -4,7 +4,7 @@ import './style/App.css';
 import Body from './components/Body'
 
 class App extends React.Component {
-  render() {
+  render () {
     return (
       <div className="App">
         <Body />
