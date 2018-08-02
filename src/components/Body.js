@@ -8,6 +8,7 @@ import { WorkSpaceArea } from './WorkSpaceArea'
 
 import Button from '@material-ui/core/Button'
 import DeleteIcon from '@material-ui/icons/Delete'
+import Grid from '@material-ui/core/Grid'
 
 export default class Body extends React.PureComponent {
   constructor(props) {
@@ -112,26 +113,31 @@ export default class Body extends React.PureComponent {
     return (
       <div className='outer-container'>
         <HeaderBarTop />
-        <div className='container' style={{ flexGrow: 1 }}>
-          <div className='body'>
-              { !!this.state.words.length && <Button
-              color='primary'
-              className='header-btn'
-              disabled={!this.state.words.length}
-              onClick={ () => this.resetWords()}>
-              <DeleteIcon />
-            </Button> }
-            <WorkSpaceArea
-              words={this.state.words}
-              editWord={this.editWord}
-            />
-            <AddNewInput
-              addWord={this.addWord}
-              text={this.state.text}
-              handleChange={this.handleChange}
-            />
+        <Grid container style={{ justifyContent: 'center', height: 'inherit' }}>
+          <Grid item xs={12} sm={6}>
+          <div className='container' style={{ flexGrow: 1 }}>
+            <div className='body'>
+                { !!this.state.words.length && <Button
+                style={{ alignSelf: 'flex-end' }}
+                color='primary'
+                className='header-btn'
+                disabled={!this.state.words.length}
+                onClick={ () => this.resetWords()}>
+                <DeleteIcon />
+              </Button> }
+              <WorkSpaceArea
+                words={this.state.words}
+                editWord={this.editWord}
+              />
+              <AddNewInput
+                addWord={this.addWord}
+                text={this.state.text}
+                handleChange={this.handleChange}
+              />
+            </div>
           </div>
-        </div>
+          </Grid>
+        </Grid>
       </div>
     )
   }
