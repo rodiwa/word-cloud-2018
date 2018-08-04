@@ -49,7 +49,7 @@ export default class HeaderBarTop extends React.PureComponent {
               aria-haspopup="true"
               onClick={this.handleMenuOpen}
             >
-              <AccountCircle color={'secondary'}/>
+              <AccountCircle size={3} style={{ color: 'white' }} />
             </IconButton>
             <Menu
               id='menu-appbar'
