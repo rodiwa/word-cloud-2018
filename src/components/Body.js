@@ -121,9 +121,10 @@ export default class Body extends React.PureComponent {
                 style={{ alignSelf: 'flex-end' }}
                 color='primary'
                 className='header-btn'
+                size='large'
                 disabled={!this.state.words.length}
                 onClick={ () => this.resetWords()}>
-                <DeleteIcon />
+                <DeleteIcon style={{ fontSize: 36 }} />
               </Button> }
               <WorkSpaceArea
                 words={this.state.words}
