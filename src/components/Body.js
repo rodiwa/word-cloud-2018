@@ -96,7 +96,6 @@ export default class Body extends React.PureComponent {
   }
 
   editWord (wordState) {
-    console.log(firebase.auth().currentUser)
     let newWordsList = { ...this.state.words }
     newWordsList[wordState.id] = wordState
 
