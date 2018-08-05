@@ -5,7 +5,7 @@ import AddIcon from '@material-ui/icons/Add'
 import ClearIcon from '@material-ui/icons/Clear'
 import Hidden from '@material-ui/core/Hidden'
 
-const FloatInputText = ({ addWord, text, handleChange }) => {
+const FloatInputText = ({ text, handleChange }) => {
   return (
     <div className='mask'>
       <TextField
@@ -31,47 +31,24 @@ const fabStyle = {
 }
 
 export default class AddNewInput extends React.PureComponent {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      isEditMaskOn: false
-    }
-  }
-
   render () {
     const { addWord, text, handleChange } = this.props
-    const { isEditMaskOn } = this.state
+    const { isEditing, startEditing, stopEditing } = this.props
   
     return (
       <form
         className='input-word-form'
         style={{ alignSelf: 'center', width: '100%' }}
         onSubmit={e => addWord(e)}>
-        { !isEditMaskOn && 
-          <Hidden smDown>
-            <TextField
-              id='name'
-              label='Psst. Tap here to start..'
-              value={text}
-              autoFocus
-              onChange={text => handleChange(text)}
-              autoComplete='off'
-              fullWidth
-              margin='normal'
-              helperText='Type your word here and hit [Enter]'
-            />
-          </Hidden> }
-        { isEditMaskOn &&  <FloatInputText addWord={addWord} text={text} handleChange={handleChange}/>}
-        <Hidden mdUp>
-          <Button
-            onClick={() => this.setState({ isEditMaskOn: !isEditMaskOn })}
-            variant='fab'
-            color={ !isEditMaskOn ? 'primary' : 'secondary' }
-            style={fabStyle}>
-            { !isEditMaskOn ? <AddIcon /> : <ClearIcon /> }
-          </Button>
-        </Hidden>
+        { isEditing &&  <FloatInputText text={text} handleChange={handleChange}/>}
+        <Button
+          // onClick={() => this.setState({ isEditMaskOn: !isEditMaskOn })}
+          onClick={() => !isEditing ? startEditing() : stopEditing()}
+          variant='fab'
+          color={ !this.props.isEditing ? 'primary' : 'secondary' }
+          style={fabStyle}>
+          { !isEditing ? <AddIcon /> : <ClearIcon /> }
+        </Button>
       </form>
     )
   }

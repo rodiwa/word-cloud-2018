@@ -44,13 +44,13 @@ export default class HeaderBarTop extends React.PureComponent {
       <AppBar position='static' color='primary' className='header-bar-top'>
         <Toolbar>
           <div>
-            <IconButton
+            {/* <IconButton
               aria-owns={!!this.state.activeEl ? 'menu-appbar' : null}
               aria-haspopup="true"
               onClick={this.handleMenuOpen}
             >
               <AccountCircle size={3} style={{ color: 'white' }} />
-            </IconButton>
+            </IconButton> */}
             <Menu
               id='menu-appbar'
               onClose={this.handleMenuClose}

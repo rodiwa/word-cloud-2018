@@ -3,7 +3,8 @@ import { upperFirst } from 'lodash'
 import firebase from 'firebase'
 
 import HeaderBarTop from './HeaderBarTop'
-import AddNewInput from './AddNewInput'
+// import AddNewInput from './AddNewInput'
+import AddNewInput from '../containers/AddNewInputContainer'
 import { WorkSpaceArea } from './WorkSpaceArea'
 
 import Button from '@material-ui/core/Button'
